@@ -81,7 +81,6 @@ ul li a {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: 0.5s;
-  z-index: var(--i);
 }
 
 ul li:hover a {
