@@ -13,12 +13,12 @@ import Glass from '@/components/Glass.vue';
     "
   >
     <div class="container">
-      <glass rDeg="0" text="镇江"></glass>
-      <glass rDeg="0" text="南京"></glass>
-      <glass rDeg="0" text="日本"></glass>
-      <glass rDeg="0" text="镇江"></glass>
-      <glass rDeg="0" text="南京"></glass>
-      <glass rDeg="0" text="日本"></glass>
+      <glass rDeg="0" text="镇江" money="¥500" color="green"></glass>
+      <glass rDeg="0" text="南京" money="¥500" color="green"></glass>
+      <glass rDeg="0" text="日本" money="¥500" color="red"></glass>
+      <glass rDeg="0" text="镇江" money="¥500" color="red"></glass>
+      <glass rDeg="0" text="南京" money="¥500" color="red"></glass>
+      <glass rDeg="0" text="日本" money="¥500" color="green"></glass>
     </div>
   </div>
 </template>
