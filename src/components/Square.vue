@@ -1,10 +1,12 @@
 <template>
   <div class="spec-glass" :style="spec_style" :data-text="props.money">
     <i>{{ props.text }}</i>
+    <player class="spec-player"></player>
   </div>
 </template>
 
 <script setup lang="ts">
+import player from '@/components/Player.vue';
 const props = defineProps<{
   rDeg: number;
   text: string;
@@ -52,5 +54,12 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
   font-size: 3em;
   color: #000;
   font-weight: border;
+}
+
+.spec-player {
+  display: flex;
+  scale: 0.5;
+  margin-left: -160px;
+  transform: skew(20deg, 10deg) rotate(-30deg);
 }
 </style>
