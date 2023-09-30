@@ -3,6 +3,7 @@ import Glass from '@/components/Glass.vue';
 import LGlass from '@/components/LGlass.vue';
 import Chance from '@/components/Chance.vue';
 import Square from '@/components/Square.vue';
+import Player from '@/components/Player.vue';
 </script>
 
 <template>
