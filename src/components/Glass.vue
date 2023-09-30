@@ -5,8 +5,12 @@
 </template>
 
 <script setup lang="ts">
-const props =
-  defineProps<{ rDeg: number; text: string; money: number; color: string }>();
+const props = defineProps<{
+  rDeg: number;
+  text: string;
+  money: number;
+  color: string;
+}>();
 const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
 </script>
 
@@ -15,7 +19,7 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
   position: relative;
   width: 180px;
   height: 240px;
-  background: linear-gradient(var(--color), transparent);
+  background: var(--color);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -24,6 +28,9 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
   transition: 0.5s;
   border-radius: 10px;
   transform: rotate(calc(var(--r) * 1deg));
+}
+.spec-glass:hover {
+  transform: translate(-10px, -10px);
 }
 
 .spec-glass::before {

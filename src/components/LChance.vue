@@ -5,8 +5,9 @@
       <div>
         <el-icon style="vertical-align: middle; font-size: 2em"
           ><star
-        /></el-icon></div
-    ></i>
+        /></el-icon>
+      </div>
+    </i>
   </div>
 </template>
 
@@ -24,8 +25,8 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
 <style scoped>
 .spec-glass {
   position: relative;
-  width: 180px;
-  height: 240px;
+  width: 240px;
+  height: 180px;
   background: var(--color);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
@@ -44,18 +45,22 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
   content: attr(data-text);
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 183px;
   height: 40px;
+  right: -70px;
+  top: 69px;
   background: rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   font-size: 25px;
+  transform: rotate(-90deg);
 }
 
 .spec-glass i {
   font-size: 3em;
-  color: #1d1e1d;
+  color: #000;
+  transform: rotate(-90deg);
 }
 </style>
