@@ -5,6 +5,13 @@ import chance from '@/components/Chance.vue';
 import lChance from '@/components/LChance.vue';
 import lBank from '@/components/LBank.vue';
 import square from '@/components/Square.vue';
+import player from '@/components/Player.vue';
+
+const player_style1 = {
+  position: 'absolute',
+  top: '100px',
+  left: '0px',
+};
 </script>
 
 <template>
@@ -187,6 +194,7 @@ import square from '@/components/Square.vue';
       text="起点"
       color="pink"
     ></square>
+    <player :style="[player_style1]"></player>
   </div>
 </template>
 
