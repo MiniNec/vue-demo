@@ -36,6 +36,7 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
   transition: 0.5s;
   border-radius: 10px;
   transform: rotate(calc(var(--r) * 1deg));
+  box-sizing: border-box;
 }
 .spec-glass:hover {
   transform: translate(-10px, -10px);
