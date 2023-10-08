@@ -1,7 +1,7 @@
 <template>
   <div class="spec-glass" :style="spec_style" :data-text="props.money">
     <i>{{ props.text }}</i>
-    <player class="spec-player"></player>
+    <!-- <player class="spec-player"></player> -->
   </div>
 </template>
 
