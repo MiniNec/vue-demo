@@ -200,7 +200,7 @@ const movePlayer1 = () => {
       color="pink"
     ></square>
     <player1 class="player_style1"></player1>
-    <el-button class="player_style1"></el-button>
+    <!-- <el-button class="player_style1" type="success"></el-button> -->
   </div>
 </template>
 
@@ -221,6 +221,6 @@ const movePlayer1 = () => {
   height: 100px;
   top: v-bind(top + 'px');
   left: v-bind(left + 'px');
-  translation: 0.5s;
+  transition: 0.25s linear 0s;
 }
 </style>
