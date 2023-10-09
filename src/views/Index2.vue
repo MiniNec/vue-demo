@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, reactive, nextTick } from 'vue';
 import glass from '@/components/Glass.vue';
 import lGlass from '@/components/LGlass.vue';
 import chance from '@/components/Chance.vue';
@@ -6,15 +7,19 @@ import lChance from '@/components/LChance.vue';
 import lBank from '@/components/LBank.vue';
 import square from '@/components/Square.vue';
 import player from '@/components/Player.vue';
+import player1 from '@/components/player/Player1.vue';
 
-const player_style1 = {
-  position: 'absolute',
-  top: '100px',
-  left: '0px',
+const top = ref(-100);
+const left = ref(-100);
+
+const movePlayer1 = () => {
+  top.value = top.value + 50;
+  left.value = left.value + 50;
 };
 </script>
 
 <template>
+  <el-button @click="movePlayer1">测试</el-button>
   <div class="container">
     <square
       style="position: absolute; top: 0px; left: 0px"
@@ -194,7 +199,8 @@ const player_style1 = {
       text="起点"
       color="pink"
     ></square>
-    <player :style="[player_style1]"></player>
+    <player1 class="player_style1"></player1>
+    <el-button class="player_style1"></el-button>
   </div>
 </template>
 
@@ -208,5 +214,13 @@ const player_style1 = {
   width: 1740px;
   height: 1740px;
   scale: 0.5;
+}
+.player_style1 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: v-bind(top + 'px');
+  left: v-bind(left + 'px');
+  translation: 0.5s;
 }
 </style>
