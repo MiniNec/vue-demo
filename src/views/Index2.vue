@@ -199,12 +199,7 @@ const movePlayer1 = () => {
         text="起点"
         color="pink"
       ></square>
-      <!-- <el-button class="player_style1" type="success"></el-button> -->
-    </div>
-    <div class="container">
       <player1 class="player_style1"></player1>
-    </div>
-    <div class="container">
       <el-button class="btnThrow" @click="movePlayer1">测试</el-button>
     </div>
   </div>
