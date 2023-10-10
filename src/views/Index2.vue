@@ -212,7 +212,7 @@ const movePlayer1 = () => {
   width: 1740px;
   height: 1740px;
   top: -500px;
-  left: 0px;
+  left: -400px;
   scale: 0.4;
 }
 .container {
