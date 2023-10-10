@@ -213,10 +213,12 @@ const movePlayer1 = () => {
 <style scoped>
 .gameScreen {
   display: flex;
-  position: relative;
+  position: absolute;
   width: 1740px;
   height: 1740px;
-  scale: 0.7;
+  top: -500px;
+  left: 0px;
+  scale: 0.4;
 }
 .container {
   display: flex;
