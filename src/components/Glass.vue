@@ -20,6 +20,27 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
 const display_house1 = ref(false);
 const display_house2 = ref(false);
 const display_house3 = ref(false);
+
+const showHouse = (num: number) => {
+  if (num == 0) {
+    display_house1.value = false;
+    display_house2.value = false;
+    display_house3.value = false;
+  } else if (num == 1) {
+    display_house1.value = true;
+  } else if (num == 2) {
+    display_house1.value = true;
+    display_house2.value = true;
+  } else if (num == 3) {
+    display_house1.value = true;
+    display_house2.value = true;
+    display_house3.value = true;
+  }
+};
+
+defineExpose({
+  showHouse,
+});
 </script>
 
 <style scoped>

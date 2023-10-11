@@ -15,6 +15,20 @@ const player1_y = ref(1620);
 
 const showBtnThrow = ref(true);
 
+const pos30 = ref<any>();
+const pos31 = ref<any>();
+
+nextTick(() => {
+  console.log(pos30.value);
+});
+
+const pos_list = ref([pos30, pos31]);
+
+const showHouseTest = () => {
+  console.log(pos_list.value[0].value);
+  pos_list.value[0].value.showHouse(1);
+};
+
 const movePlayer1 = () => {
   showBtnThrow.value = false;
   var now_pos = player1_pos.value;
@@ -293,185 +307,217 @@ const pos_data_list = ref([
   <div class="gameScreen">
     <div class="container">
       <square
+        ref="pos16"
         style="position: absolute; top: 0px; left: 0px"
         rDeg="0"
         text="世界杯"
         color="pink"
       ></square>
       <glass
+        ref="pos15"
         style="position: absolute; top: 0px; left: 240px"
         rDeg="0"
         text="布拉格"
         color="#DE4BF4"
       ></glass>
       <glass
+        ref="pos14"
         style="position: absolute; top: 0px; left: 420px"
         rDeg="0"
         text="普吉岛"
         color="#8AE2D5"
       ></glass>
       <glass
+        ref="pos13"
         style="position: absolute; top: 0px; left: 600px"
         rDeg="0"
         text="柏林"
         color="#DE4BF4"
       ></glass>
       <chance
+        ref="pos12"
         style="position: absolute; top: 0px; left: 780px"
         rDeg="0"
         text="机会"
         color="#E8EDE8"
       ></chance>
       <glass
+        ref="pos11"
         style="position: absolute; top: 0px; left: 960px"
         rDeg="0"
         text="莫斯科"
         color="#9603AD"
       ></glass>
       <glass
+        ref="pos10"
         style="position: absolute; top: 0px; left: 1140px"
         rDeg="0"
         text="日内瓦"
         color="#9603AD"
       ></glass>
       <glass
+        ref="pos9"
         style="position: absolute; top: 0px; left: 1320px"
         rDeg="0"
         text="罗马"
         color="#9603AD"
       ></glass>
       <square
+        ref="pos8"
         style="position: absolute; top: 0px; left: 1500px"
         rDeg="0"
         text="世界旅游"
         color="pink"
       ></square>
       <lGlass
+        ref="pos17"
         style="position: absolute; top: 240px; left: 0px"
         text="圣保罗"
         color="blue"
       ></lGlass>
       <lGlass
+        ref="pos18"
         style="position: absolute; top: 420px; left: 0px"
         text="夏威夷"
         color="#8AE2D5"
       ></lGlass>
       <lGlass
+        ref="pos19"
         style="position: absolute; top: 600px; left: 0px"
         text="魁北克"
         color="blue"
       ></lGlass>
       <lChance
+        ref="pos20"
         style="position: absolute; top: 780px; left: 0px"
         text="机会"
         color="#E8EDE8"
       ></lChance>
       <lGlass
+        ref="pos21"
         style="position: absolute; top: 960px; left: 0px"
         text="悉尼"
         color="#3498DB"
       ></lGlass>
       <lGlass
+        ref="pos22"
         style="position: absolute; top: 1140px; left: 0px"
         text="东京"
         color="#3498DB"
       ></lGlass>
       <lGlass
+        ref="pos23"
         style="position: absolute; top: 1320px; left: 0px"
         text="巴厘岛"
         color="#8AE2D5"
       ></lGlass>
       <lGlass
+        ref="pos7"
         style="position: absolute; top: 240px; left: 1500px"
         text="塔希提岛"
         color="#8AE2D5"
       ></lGlass>
       <lGlass
+        ref="pos6"
         style="position: absolute; top: 420px; left: 1500px"
         text="伦敦"
         color="#ED954E"
       ></lGlass>
       <lGlass
+        ref="pos5"
         style="position: absolute; top: 600px; left: 1500px"
         text="巴黎"
         color="#ED954E"
       ></lGlass>
       <lChance
+        ref="pos4"
         style="position: absolute; top: 780px; left: 1500px"
         text="机会"
         color="#E8EDE8"
       ></lChance>
       <lGlass
+        ref="pos3"
         style="position: absolute; top: 960px; left: 1500px"
         text="纽约"
         color="#ED1717"
       ></lGlass>
       <lBank
+        ref="pos2"
         style="position: absolute; top: 1140px; left: 1500px"
         text="国税局"
         color="#E8EDE8"
       ></lBank>
       <lGlass
+        ref="pos1"
         style="position: absolute; top: 1320px; left: 1500px"
         text="北京"
         color="#ED1717"
       ></lGlass>
       <square
+        ref="pos24"
         style="position: absolute; top: 1500px; left: 0px"
         rDeg="0"
         text="无人岛"
         color="pink"
       ></square>
       <glass
+        ref="pos25"
         style="position: absolute; top: 1500px; left: 240px"
         rDeg="0"
         text="开罗"
         color="#2EC12E"
       ></glass>
       <glass
+        ref="pos26"
         style="position: absolute; top: 1500px; left: 420px"
         rDeg="0"
         text="迪拜"
         color="#2EC12E"
       ></glass>
       <glass
+        ref="pos27"
         style="position: absolute; top: 1500px; left: 600px"
         rDeg="0"
         text="新德里"
         color="#2EC12E"
       ></glass>
       <glass
+        ref="pos28"
         style="position: absolute; top: 1500px; left: 780px"
         rDeg="0"
         text="马尔代夫"
         color="#8AE2D5"
       ></glass>
       <glass
+        ref="pos29"
         style="position: absolute; top: 1500px; left: 960px"
         rDeg="0"
         text="首尔"
         color="#00FF00"
       ></glass>
       <chance
+        ref="pos30"
         style="position: absolute; top: 1500px; left: 1140px"
         rDeg="0"
         text="奖励"
         color="#E8EDE8"
       ></chance>
       <glass
+        ref="pos31"
         style="position: absolute; top: 1500px; left: 1320px"
         rDeg="0"
         text="曼谷"
         color="#00FF00"
       ></glass>
       <square
+        ref="pos0"
         style="position: absolute; top: 1500px; left: 1500px"
         rDeg="0"
         text="起点"
         color="pink"
       ></square>
       <player1 class="player_style1"></player1>
-      <el-button v-if="showBtnThrow" class="btnThrow" @click="movePlayer1"
+      <el-button v-if="showBtnThrow" class="btnThrow" @click="showHouseTest"
         >测试</el-button
       >
     </div>
