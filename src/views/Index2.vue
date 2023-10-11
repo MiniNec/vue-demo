@@ -24,10 +24,18 @@ nextTick(() => {
 
 const pos_list = ref([pos29, pos31]);
 
+// 掷色子调用的函数
+const btnThrowDice = () => {
+  setMultipleTest();
+};
+
 const showHouseTest = () => {
-  console.log(pos_list.value[0].value);
   pos_list.value[0].value.showHouse(1);
   pos_list.value[1].value.showHouse(2);
+};
+
+const setMultipleTest = () => {
+  pos_list.value[0].value.setMultiple('X3');
 };
 
 const movePlayer1 = () => {
@@ -518,7 +526,7 @@ const pos_data_list = ref([
         color="pink"
       ></square>
       <player1 class="player_style1"></player1>
-      <el-button v-if="showBtnThrow" class="btnThrow" @click="movePlayer1"
+      <el-button v-if="showBtnThrow" class="btnThrow" @click="btnThrowDice"
         >测试</el-button
       >
     </div>

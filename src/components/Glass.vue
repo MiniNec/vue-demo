@@ -1,5 +1,5 @@
 <template>
-  <div class="spec-glass" :style="spec_style" :data-text="props.money">
+  <div class="spec-glass" :style="spec_style" :data-text="multiple">
     <i>{{ props.text }}</i>
     <div v-if="display_house1" class="spec-house spec-house1">房1</div>
     <div v-if="display_house2" class="spec-house spec-house2">房2</div>
@@ -10,17 +10,21 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 const props = defineProps<{
-  rDeg: number;
   text: string;
-  money: number;
   color: string;
 }>();
-const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
+// const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
+const spec_style = ' --color:' + props.color;
 
+/* 小房子展示 */
 const display_house1 = ref(false);
 const display_house2 = ref(false);
 const display_house3 = ref(false);
 
+/* 下方小字绑定值 */
+const multiple = ref('X1');
+
+/* 买了房子的小房子展示 */
 const showHouse = (num: number) => {
   if (num == 0) {
     display_house1.value = false;
@@ -38,8 +42,14 @@ const showHouse = (num: number) => {
   }
 };
 
+/* 设置下方倍数小字 */
+const setMultiple = (str: string) => {
+  multiple.value = str;
+};
+
 defineExpose({
   showHouse,
+  setMultiple,
 });
 </script>
 
@@ -56,7 +66,7 @@ defineExpose({
   align-items: center;
   transition: 0.5s;
   border-radius: 10px;
-  transform: rotate(calc(var(--r) * 1deg));
+  /* transform: rotate(calc(var(--r) * 1deg)); */
   box-sizing: border-box;
 }
 .spec-glass:hover {
