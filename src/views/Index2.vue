@@ -9,39 +9,77 @@ import square from '@/components/Square.vue';
 import player from '@/components/Player.vue';
 import player1 from '@/components/player/Player1.vue';
 
-const top = ref(0);
-const left = ref(0);
+const player1_pos = ref(0);
+const player1_x = ref(1620);
+const player1_y = ref(1620);
 
 const movePlayer1 = () => {
-  top.value = top.value + 50;
-  left.value = left.value + 50;
+  var now_pos = player1_pos.value;
+  var dice = Math.floor(Math.random() * 11) + 2;
+  player1_pos.value = player1_pos.value + dice;
+  player1_pos.value = player1_pos.value % 32;
+  console.log('原来:' + now_pos, '筛子:' + dice, '现在:' + player1_pos.value);
+  player1_x.value = pos_center_list.value[player1_pos.value][0];
+  player1_y.value = pos_center_list.value[player1_pos.value][1];
+
+  /**if (player1_pos.value > now_pos) {
+    for (var i = now_pos + 1; i <= player1_pos.value; i++) {
+      player1_x.value = pos_center_list.value[i][0];
+      player1_y.value = pos_center_list.value[i][1];
+      await sleep(250);
+    }
+  } else {
+    for (var i = now_pos + 1; i < 24; i++) {
+      player1_x.value = pos_center_list.value[i][0];
+      player1_y.value = pos_center_list.value[i][1];
+      await sleep(250);
+    }
+
+    for (var i = 0; i <= player1_pos.value; i++) {
+      player1_x.value = pos_center_list.value[i][0];
+      player1_y.value = pos_center_list.value[i][1];
+      await sleep(250);
+    }
+  }*/
+};
+
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 const pos_center_list = ref([
-  (1620, 1620),
-  (1410, 1620),
-  (1230, 1620),
-  (1050, 1620),
-  (870, 1620),
-  (690, 1620),
-  (510, 1620),
-  (330, 1620),
-  (120, 1620),
-  (120, 1410),
-  (120, 1230),
-  (120, 1050),
-  (120, 870),
-  (120, 690),
-  (120, 510),
-  (120, 330),
-  (120, 120),
-  (330, 120),
-  (510, 120),
-  (690, 120),
-  (870, 120),
-  (1050, 120),
-  (1230, 120),
-  (1410, 120),
+  [1620, 1620],
+  [1410, 1620],
+  [1230, 1620],
+  [1050, 1620],
+  [870, 1620],
+  [690, 1620],
+  [510, 1620],
+  [330, 1620],
+  [120, 1620],
+  [120, 1410],
+  [120, 1230],
+  [120, 1050],
+  [120, 870],
+  [120, 690],
+  [120, 510],
+  [120, 330],
+  [120, 120],
+  [330, 120],
+  [510, 120],
+  [690, 120],
+  [870, 120],
+  [1050, 120],
+  [1230, 120],
+  [1410, 120],
+  [1620, 120],
+  [1620, 330],
+  [1620, 510],
+  [1620, 690],
+  [1620, 870],
+  [1620, 1050],
+  [1620, 1230],
+  [1620, 1410],
 ]);
 </script>
 
@@ -255,11 +293,16 @@ const pos_center_list = ref([
 }
 .player_style1 {
   position: absolute;
-  width: 100px;
-  height: 100px;
-  top: v-bind(top + 'px');
-  left: v-bind(left + 'px');
+  width: 120px;
+  height: 120px;
+  top: v-bind(player1_x + 'px');
+  left: v-bind(player1_y + 'px');
   transition: 0.25s linear 0s;
+  font-size: 40px;
+  background-color: #000;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
 }
 .btnThrow {
   position: absolute;
@@ -267,5 +310,8 @@ const pos_center_list = ref([
   height: 140px;
   top: 1700px;
   left: 1900px;
+  background-color: #1fefff;
+  color: #fff;
+  font-size: 40px;
 }
 </style>

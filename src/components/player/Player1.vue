@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>111</div>
+  <div>玩家</div>
 </template>
 
 <style scoped></style>
