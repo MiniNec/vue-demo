@@ -95,7 +95,23 @@ const btnThrowDice = async () => {
   // step3:判断角色是罚款还是购买还是特殊
   if (player1_pos.value == 0) {
     // 回到起点,移动时已经增加钱了，不需要操作
-  } else if (player1_pos.value in []) {
+  } else if (player1_pos.value == 8) {
+    console.log('旅游');
+  } else if (player1_pos.value == 16) {
+    console.log('世界杯');
+  } else if (player1_pos.value == 24) {
+    console.log('无人岛');
+  } else if (
+    player1_pos.value == 4 ||
+    player1_pos.value == 12 ||
+    player1_pos.value == 20
+  ) {
+    console.log('机会');
+  } else if (player1_pos.value == 30) {
+    console.log('奖励');
+  } else if (player1_pos.value == 2) {
+    console.log('交税');
+  } else {
   }
   showBtnThrow.value = true;
 };
