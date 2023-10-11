@@ -13,7 +13,10 @@ const player1_pos = ref(0);
 const player1_x = ref(1620);
 const player1_y = ref(1620);
 
-const movePlayer1 = () => {
+const showBtnThrow = ref(true);
+
+const movePlayer1 = async () => {
+  showBtnThrow.value = false;
   var now_pos = player1_pos.value;
   var dice = Math.floor(Math.random() * 11) + 2;
   player1_pos.value = player1_pos.value + dice;
@@ -21,7 +24,8 @@ const movePlayer1 = () => {
   console.log('原来:' + now_pos, '筛子:' + dice, '现在:' + player1_pos.value);
   player1_x.value = pos_center_list.value[player1_pos.value][0];
   player1_y.value = pos_center_list.value[player1_pos.value][1];
-
+  await sleep(500);
+  showBtnThrow.value = true;
   /**if (player1_pos.value > now_pos) {
     for (var i = now_pos + 1; i <= player1_pos.value; i++) {
       player1_x.value = pos_center_list.value[i][0];
@@ -265,7 +269,9 @@ const pos_center_list = ref([
         color="pink"
       ></square>
       <player1 class="player_style1"></player1>
-      <el-button class="btnThrow" @click="movePlayer1">测试</el-button>
+      <el-button v-if="showBtnThrow" class="btnThrow" @click="movePlayer1"
+        >测试</el-button
+      >
     </div>
   </div>
 </template>
