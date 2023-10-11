@@ -1,10 +1,14 @@
 <template>
   <div class="spec-glass" :style="spec_style" :data-text="props.money">
     <i>{{ props.text }}</i>
+    <div v-if="display_house1" class="spec-house spec-house1">房1</div>
+    <div v-if="display_house2" class="spec-house spec-house2">房2</div>
+    <div v-if="display_house3" class="spec-house spec-house3">房3</div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 const props = defineProps<{
   rDeg: number;
   text: string;
@@ -12,6 +16,10 @@ const props = defineProps<{
   color: string;
 }>();
 const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
+
+const display_house1 = ref(false);
+const display_house2 = ref(false);
+const display_house3 = ref(false);
 </script>
 
 <style scoped>
@@ -51,5 +59,26 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
 .spec-glass i {
   font-size: 3em;
   color: #fff;
+}
+
+.spec-house {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 50px;
+  left: 20px;
+  background-color: #fff;
+}
+
+.spec-house1 {
+  left: 20px;
+}
+
+.spec-house2 {
+  left: 70px;
+}
+
+.spec-house3 {
+  left: 120px;
 }
 </style>
