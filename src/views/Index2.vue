@@ -99,26 +99,61 @@ const btnThrowDice = async () => {
     // 回到起点,移动时已经增加钱了，不需要操作
   } else if (new_pos == 8) {
     console.log('旅游');
+    showBtnThrow.value = true;
+    return;
   } else if (new_pos == 16) {
     console.log('世界杯');
+    showBtnThrow.value = true;
+    return;
   } else if (new_pos == 24) {
     console.log('无人岛');
+    showBtnThrow.value = true;
+    return;
   } else if (new_pos == 4 || new_pos == 12 || new_pos == 20) {
     console.log('机会');
+    showBtnThrow.value = true;
+    return;
   } else if (new_pos == 30) {
     console.log('奖励');
+    showBtnThrow.value = true;
+    return;
   } else if (new_pos == 2) {
     console.log('交税');
+    showBtnThrow.value = true;
+    return;
   } else {
     if (
       pos_data_list.value[new_pos].owner == 0 ||
       pos_data_list.value[new_pos].owner == player1_data.value.player_id
     ) {
-      if (pos_data_list.value[new_pos].level != 4) {
+      if (pos_data_list.value[new_pos].level == 4) {
+        showBtnThrow.value = true;
+        return;
       }
+      if (pos_data_list.value[new_pos].level == 3) {
+        dialogBuyHouse.value.btnBuy1 = false;
+        dialogBuyHouse.value.btnBuy1 = false;
+        dialogBuyHouse.value.btnBuy1 = false;
+        dialogBuyHouse.value.btnBuy1 = true;
+      } else if (pos_data_list.value[new_pos].level == 2) {
+        dialogBuyHouse.value.btnBuy1 = false;
+        dialogBuyHouse.value.btnBuy1 = false;
+        dialogBuyHouse.value.btnBuy1 = true;
+        dialogBuyHouse.value.btnBuy1 = false;
+      } else if (pos_data_list.value[new_pos].level == 1) {
+        dialogBuyHouse.value.btnBuy1 = false;
+        dialogBuyHouse.value.btnBuy1 = true;
+        dialogBuyHouse.value.btnBuy1 = true;
+        dialogBuyHouse.value.btnBuy1 = false;
+      } else if (pos_data_list.value[new_pos].level == 0) {
+        dialogBuyHouse.value.btnBuy1 = true;
+        dialogBuyHouse.value.btnBuy1 = true;
+        dialogBuyHouse.value.btnBuy1 = true;
+        dialogBuyHouse.value.btnBuy1 = false;
+      }
+      dialogBuyHouse.value.visible = true;
     }
   }
-  showBtnThrow.value = true;
 };
 
 const showHouseTest = () => {
