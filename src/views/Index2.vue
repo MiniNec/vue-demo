@@ -15,18 +15,19 @@ const player1_y = ref(1620);
 
 const showBtnThrow = ref(true);
 
-const pos30 = ref<any>();
+const pos29 = ref<any>();
 const pos31 = ref<any>();
 
 nextTick(() => {
-  console.log(pos30.value);
+  console.log(pos29.value);
 });
 
-const pos_list = ref([pos30, pos31]);
+const pos_list = ref([pos29, pos31]);
 
 const showHouseTest = () => {
   console.log(pos_list.value[0].value);
   pos_list.value[0].value.showHouse(1);
+  pos_list.value[1].value.showHouse(2);
 };
 
 const movePlayer1 = () => {
@@ -517,7 +518,7 @@ const pos_data_list = ref([
         color="pink"
       ></square>
       <player1 class="player_style1"></player1>
-      <el-button v-if="showBtnThrow" class="btnThrow" @click="showHouseTest"
+      <el-button v-if="showBtnThrow" class="btnThrow" @click="movePlayer1"
         >测试</el-button
       >
     </div>
