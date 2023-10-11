@@ -15,12 +15,75 @@ const player1_y = ref(1620);
 
 const showBtnThrow = ref(true);
 
+const pos0 = ref<any>();
+const pos1 = ref<any>();
+const pos2 = ref<any>();
+const pos3 = ref<any>();
+const pos4 = ref<any>();
+const pos5 = ref<any>();
+const pos6 = ref<any>();
+const pos7 = ref<any>();
+const pos8 = ref<any>();
+const pos9 = ref<any>();
+const pos10 = ref<any>();
+const pos11 = ref<any>();
+const pos12 = ref<any>();
+const pos13 = ref<any>();
+const pos14 = ref<any>();
+const pos15 = ref<any>();
+const pos16 = ref<any>();
+const pos17 = ref<any>();
+const pos18 = ref<any>();
+const pos19 = ref<any>();
+const pos20 = ref<any>();
+const pos21 = ref<any>();
+const pos22 = ref<any>();
+const pos23 = ref<any>();
+const pos24 = ref<any>();
+const pos25 = ref<any>();
+const pos26 = ref<any>();
+const pos27 = ref<any>();
+const pos28 = ref<any>();
 const pos29 = ref<any>();
+const pos30 = ref<any>();
 const pos31 = ref<any>();
 
 nextTick(() => {});
 
-const pos_list = ref([pos29, pos31]);
+const pos_list = ref([
+  pos0,
+  pos1,
+  pos2,
+  pos3,
+  pos4,
+  pos5,
+  pos6,
+  pos7,
+  pos8,
+  pos9,
+  pos10,
+  pos11,
+  pos12,
+  pos13,
+  pos14,
+  pos15,
+  pos16,
+  pos17,
+  pos18,
+  pos19,
+  pos20,
+  pos21,
+  pos22,
+  pos23,
+  pos24,
+  pos25,
+  pos26,
+  pos27,
+  pos28,
+  pos29,
+  pos30,
+  pos31,
+]);
 
 // 掷色子调用的函数
 const btnThrowDice = async () => {

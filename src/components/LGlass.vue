@@ -103,4 +103,29 @@ defineExpose({
   color: #fff;
   transform: rotate(-90deg);
 }
+.spec-house {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  left: 50px;
+  background-color: #fff;
+}
+
+.spec-house1 {
+  top: 120px;
+}
+
+.spec-house2 {
+  top: 70px;
+}
+
+.spec-house3 {
+  top: 20px;
+}
+
+.spec-house4 {
+  top: 70px;
+  width: 50px !important;
+  height: 50px !important;
+}
 </style>
