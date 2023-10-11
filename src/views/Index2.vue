@@ -93,6 +93,7 @@ const btnThrowDice = async () => {
   movePlayer1();
   await sleep(250);
   // step3:判断角色是否可以购买
+  
 };
 
 const showHouseTest = () => {
