@@ -18,15 +18,18 @@ const showBtnThrow = ref(true);
 const pos29 = ref<any>();
 const pos31 = ref<any>();
 
-nextTick(() => {
-  console.log(pos29.value);
-});
+nextTick(() => {});
 
 const pos_list = ref([pos29, pos31]);
 
 // 掷色子调用的函数
-const btnThrowDice = () => {
-  setMultipleTest();
+const btnThrowDice = async () => {
+  // step1:隐藏掷色子
+  showBtnThrow.value = false;
+  // step2:移动到指定位置
+  movePlayer1();
+  await sleep(250);
+  // step3:判断角色是否可以购买
 };
 
 const showHouseTest = () => {
@@ -39,7 +42,6 @@ const setMultipleTest = () => {
 };
 
 const movePlayer1 = () => {
-  showBtnThrow.value = false;
   var now_pos = player1_pos.value;
   var dice = Math.floor(Math.random() * 11) + 2;
   player1_pos.value = player1_pos.value + dice;
@@ -47,32 +49,11 @@ const movePlayer1 = () => {
   console.log('原来:' + now_pos, '筛子:' + dice, '现在:' + player1_pos.value);
   player1_x.value = pos_center_list.value[player1_pos.value][0];
   player1_y.value = pos_center_list.value[player1_pos.value][1];
-  setTimeout(() => {
-    showBtnThrow.value = true;
-  }, 500);
-  /**if (player1_pos.value > now_pos) {
-    for (var i = now_pos + 1; i <= player1_pos.value; i++) {
-      player1_x.value = pos_center_list.value[i][0];
-      player1_y.value = pos_center_list.value[i][1];
-      await sleep(250);
-    }
-  } else {
-    for (var i = now_pos + 1; i < 24; i++) {
-      player1_x.value = pos_center_list.value[i][0];
-      player1_y.value = pos_center_list.value[i][1];
-      await sleep(250);
-    }
-
-    for (var i = 0; i <= player1_pos.value; i++) {
-      player1_x.value = pos_center_list.value[i][0];
-      player1_y.value = pos_center_list.value[i][1];
-      await sleep(250);
-    }
-  }*/
 };
 
 const player1_data = ref({
   player_id: 1,
+  name: '玩家1',
   money: 2000,
   player_owner: [],
 });
@@ -526,6 +507,10 @@ const pos_data_list = ref([
         color="pink"
       ></square>
       <player1 class="player_style1"></player1>
+      <div class="player_card1">
+        <div>玩家昵称: {{ player1_data.name }}</div>
+        <div>金币: {{ player1_data.money }}</div>
+      </div>
       <el-button v-if="showBtnThrow" class="btnThrow" @click="btnThrowDice"
         >测试</el-button
       >
@@ -540,7 +525,7 @@ const pos_data_list = ref([
   width: 1740px;
   height: 1740px;
   top: -500px;
-  left: -400px;
+  left: -200px;
   scale: 0.4;
 }
 .container {
@@ -576,5 +561,15 @@ const pos_data_list = ref([
   background-color: #1fefff;
   color: #fff;
   font-size: 40px;
+}
+.player_card1 {
+  position: absolute;
+  width: 500px;
+  height: 200px;
+  top: 1700px;
+  left: -550px;
+  background-color: #123321;
+  font-size: 50px;
+  color: #fff;
 }
 </style>

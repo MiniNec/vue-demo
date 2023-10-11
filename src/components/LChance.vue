@@ -14,12 +14,11 @@
 <script setup lang="ts">
 import { Star } from '@element-plus/icons-vue';
 const props = defineProps<{
-  rDeg: number;
   text: string;
-  money: number;
   color: string;
 }>();
-const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
+// const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
+const spec_style = ' --color:' + props.color;
 </script>
 
 <style scoped>
@@ -35,7 +34,7 @@ const spec_style = '--r:' + props.rDeg + '; --color:' + props.color;
   align-items: center;
   transition: 0.5s;
   border-radius: 10px;
-  transform: rotate(calc(var(--r) * 1deg));
+  /* transform: rotate(calc(var(--r) * 1deg)); */
   box-sizing: border-box;
 }
 .spec-glass:hover {

@@ -4,6 +4,7 @@
     <div v-if="display_house1" class="spec-house spec-house1">房1</div>
     <div v-if="display_house2" class="spec-house spec-house2">房2</div>
     <div v-if="display_house3" class="spec-house spec-house3">房3</div>
+    <div v-if="display_house4" class="spec-house spec-house4">Big房</div>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ const spec_style = ' --color:' + props.color;
 const display_house1 = ref(false);
 const display_house2 = ref(false);
 const display_house3 = ref(false);
+const display_house4 = ref(false);
 
 /* 下方小字绑定值 */
 const multiple = ref('X1');
@@ -30,6 +32,7 @@ const showHouse = (num: number) => {
     display_house1.value = false;
     display_house2.value = false;
     display_house3.value = false;
+    display_house4.value = false;
   } else if (num == 1) {
     display_house1.value = true;
   } else if (num == 2) {
@@ -39,6 +42,11 @@ const showHouse = (num: number) => {
     display_house1.value = true;
     display_house2.value = true;
     display_house3.value = true;
+  } else if (num == 4) {
+    display_house1.value = false;
+    display_house2.value = false;
+    display_house3.value = false;
+    display_house4.value = true;
   }
 };
 
@@ -111,5 +119,11 @@ defineExpose({
 
 .spec-house3 {
   left: 120px;
+}
+
+.spec-house4 {
+  left: 70px;
+  width: 50px !important;
+  height: 50px !important;
 }
 </style>
