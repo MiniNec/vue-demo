@@ -93,25 +93,30 @@ const btnThrowDice = async () => {
   movePlayer1();
   await sleep(250);
   // step3:判断角色是罚款还是购买还是特殊
-  if (player1_pos.value == 0) {
+  var new_pos = player1_pos.value;
+
+  if (new_pos == 0) {
     // 回到起点,移动时已经增加钱了，不需要操作
-  } else if (player1_pos.value == 8) {
+  } else if (new_pos == 8) {
     console.log('旅游');
-  } else if (player1_pos.value == 16) {
+  } else if (new_pos == 16) {
     console.log('世界杯');
-  } else if (player1_pos.value == 24) {
+  } else if (new_pos == 24) {
     console.log('无人岛');
-  } else if (
-    player1_pos.value == 4 ||
-    player1_pos.value == 12 ||
-    player1_pos.value == 20
-  ) {
+  } else if (new_pos == 4 || new_pos == 12 || new_pos == 20) {
     console.log('机会');
-  } else if (player1_pos.value == 30) {
+  } else if (new_pos == 30) {
     console.log('奖励');
-  } else if (player1_pos.value == 2) {
+  } else if (new_pos == 2) {
     console.log('交税');
   } else {
+    if (
+      pos_data_list.value[new_pos].owner == 0 ||
+      pos_data_list.value[new_pos].owner == player1_data.value.player_id
+    ) {
+      if (pos_data_list.value[new_pos].level != 4) {
+      }
+    }
   }
   showBtnThrow.value = true;
 };
@@ -144,6 +149,14 @@ const player1_data = ref({
   name: '玩家1',
   money: 2000,
   player_owner: [],
+});
+
+const dialogBuyHouse = ref({
+  visible: false,
+  btnBuy1: false,
+  btnBuy2: false,
+  btnBuy3: false,
+  btnBuy4: false,
 });
 
 const sleep = (ms) => {
@@ -604,6 +617,17 @@ const pos_data_list = ref([
       >
     </div>
   </div>
+  <el-dialog
+    v-model="dialogBuyHouse.visible"
+    title="Tips"
+    width="30%"
+    draggable
+  >
+    <el-button>购买房1</el-button>
+    <el-button>购买房2</el-button>
+    <el-button>购买房3</el-button>
+    <el-button>购买房4</el-button>
+  </el-dialog>
 </template>
 
 <style scoped>
