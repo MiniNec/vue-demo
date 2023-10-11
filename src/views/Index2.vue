@@ -92,8 +92,12 @@ const btnThrowDice = async () => {
   // step2:移动到指定位置
   movePlayer1();
   await sleep(250);
-  // step3:判断角色是否可以购买
-  
+  // step3:判断角色是罚款还是购买还是特殊
+  if (player1_pos.value == 0) {
+    // 回到起点,移动时已经增加钱了，不需要操作
+  } else if (player1_pos.value in []) {
+  }
+  showBtnThrow.value = true;
 };
 
 const showHouseTest = () => {
@@ -110,6 +114,10 @@ const movePlayer1 = () => {
   var dice = Math.floor(Math.random() * 11) + 2;
   player1_pos.value = player1_pos.value + dice;
   player1_pos.value = player1_pos.value % 32;
+  if (now_pos > player1_pos.value) {
+    // console.log(player1_data.value.money);
+    player1_data.value.money = player1_data.value.money + 500;
+  }
   console.log('原来:' + now_pos, '筛子:' + dice, '现在:' + player1_pos.value);
   player1_x.value = pos_center_list.value[player1_pos.value][0];
   player1_y.value = pos_center_list.value[player1_pos.value][1];
