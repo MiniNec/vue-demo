@@ -15,7 +15,7 @@ const player1_y = ref(1620);
 
 const showBtnThrow = ref(true);
 
-const movePlayer1 = async () => {
+const movePlayer1 = () => {
   showBtnThrow.value = false;
   var now_pos = player1_pos.value;
   var dice = Math.floor(Math.random() * 11) + 2;
@@ -24,8 +24,9 @@ const movePlayer1 = async () => {
   console.log('原来:' + now_pos, '筛子:' + dice, '现在:' + player1_pos.value);
   player1_x.value = pos_center_list.value[player1_pos.value][0];
   player1_y.value = pos_center_list.value[player1_pos.value][1];
-  await sleep(500);
-  showBtnThrow.value = true;
+  setTimeout(() => {
+    showBtnThrow.value = true;
+  }, 500);
   /**if (player1_pos.value > now_pos) {
     for (var i = now_pos + 1; i <= player1_pos.value; i++) {
       player1_x.value = pos_center_list.value[i][0];
@@ -46,6 +47,12 @@ const movePlayer1 = async () => {
     }
   }*/
 };
+
+const player1_data = ref({
+  player_id: 1,
+  money: 2000,
+  player_owner: [],
+});
 
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -84,6 +91,201 @@ const pos_center_list = ref([
   [1620, 1050],
   [1620, 1230],
   [1620, 1410],
+]);
+
+const pos_data_list = ref([
+  {
+    id: 0,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 1,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 2,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 3,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 4,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 5,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 6,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 7,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 8,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 9,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 10,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 11,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 12,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 13,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 14,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 15,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 16,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 17,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 18,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 19,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 20,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 21,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 22,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 23,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 24,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 25,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 26,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 27,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 28,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 29,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 30,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
+  {
+    id: 31,
+    owner: 0,
+    level: 0,
+    need_money: [100, 200, 300, 400],
+  },
 ]);
 </script>
 
