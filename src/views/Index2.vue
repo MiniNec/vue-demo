@@ -198,6 +198,11 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+const closeDialogBuyHouse = (done: () => void) => {
+  showBtnThrow.value = true;
+  done();
+};
+
 const pos_center_list = ref([
   [1620, 1620],
   [1410, 1620],
@@ -655,8 +660,9 @@ const pos_data_list = ref([
   <el-dialog
     v-model="dialogBuyHouse.visible"
     title="Tips"
-    width="30%"
+    width="40%"
     draggable
+    :before-close="closeDialogBuyHouse"
   >
     <el-button>购买房1</el-button>
     <el-button>购买房2</el-button>
