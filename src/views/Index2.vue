@@ -109,19 +109,20 @@ const btnThrowDice = async () => {
     console.log('无人岛');
     showBtnThrow.value = true;
     return;
-  } else if (new_pos == 4 || new_pos == 12 || new_pos == 20) {
+  } else if (new_pos == 12 || new_pos == 20 || new_pos == 28) {
     console.log('机会');
     showBtnThrow.value = true;
     return;
-  } else if (new_pos == 30) {
+  } else if (new_pos == 3) {
     console.log('奖励');
     showBtnThrow.value = true;
     return;
-  } else if (new_pos == 2) {
+  } else if (new_pos == 30) {
     console.log('交税');
     showBtnThrow.value = true;
     return;
   } else {
+    var now_money = player1_data.value.money;
     if (
       pos_data_list.value[new_pos].owner == 0 ||
       pos_data_list.value[new_pos].owner == player1_data.value.player_id
@@ -131,34 +132,90 @@ const btnThrowDice = async () => {
         return;
       }
       if (pos_data_list.value[new_pos].level == 3) {
-        dialogBuyHouse.value.btnBuy1 = false;
-        dialogBuyHouse.value.btnBuy1 = false;
-        dialogBuyHouse.value.btnBuy1 = false;
         dialogBuyHouse.value.btnBuy1 = true;
+        dialogBuyHouse.value.btnBuy2 = true;
+        dialogBuyHouse.value.btnBuy3 = true;
+        if (now_money >= pos_data_list.value[new_pos].need_money[3]) {
+          dialogBuyHouse.value.btnBuy4 = false;
+        } else {
+          dialogBuyHouse.value.btnBuy4 = true;
+        }
       } else if (pos_data_list.value[new_pos].level == 2) {
-        dialogBuyHouse.value.btnBuy1 = false;
-        dialogBuyHouse.value.btnBuy1 = false;
         dialogBuyHouse.value.btnBuy1 = true;
-        dialogBuyHouse.value.btnBuy1 = false;
+        dialogBuyHouse.value.btnBuy2 = true;
+        if (now_money >= pos_data_list.value[new_pos].need_money[2]) {
+          dialogBuyHouse.value.btnBuy3 = false;
+        } else {
+          dialogBuyHouse.value.btnBuy3 = true;
+        }
+        dialogBuyHouse.value.btnBuy4 = true;
       } else if (pos_data_list.value[new_pos].level == 1) {
-        dialogBuyHouse.value.btnBuy1 = false;
         dialogBuyHouse.value.btnBuy1 = true;
-        dialogBuyHouse.value.btnBuy1 = true;
-        dialogBuyHouse.value.btnBuy1 = false;
+        if (now_money >= pos_data_list.value[new_pos].need_money[1]) {
+          dialogBuyHouse.value.btnBuy2 = false;
+        } else {
+          dialogBuyHouse.value.btnBuy2 = true;
+        }
+        if (
+          now_money >=
+          pos_data_list.value[new_pos].need_money[1] +
+            pos_data_list.value[new_pos].need_money[2]
+        ) {
+          dialogBuyHouse.value.btnBuy3 = false;
+        } else {
+          dialogBuyHouse.value.btnBuy3 = true;
+        }
+        dialogBuyHouse.value.btnBuy4 = true;
       } else if (pos_data_list.value[new_pos].level == 0) {
-        dialogBuyHouse.value.btnBuy1 = true;
-        dialogBuyHouse.value.btnBuy1 = true;
-        dialogBuyHouse.value.btnBuy1 = true;
-        dialogBuyHouse.value.btnBuy1 = false;
+        if (now_money >= pos_data_list.value[new_pos].need_money[0]) {
+          dialogBuyHouse.value.btnBuy1 = false;
+        } else {
+          dialogBuyHouse.value.btnBuy1 = true;
+        }
+        if (
+          now_money >=
+          pos_data_list.value[new_pos].need_money[0] +
+            pos_data_list.value[new_pos].need_money[1]
+        ) {
+          dialogBuyHouse.value.btnBuy2 = false;
+        } else {
+          dialogBuyHouse.value.btnBuy2 = true;
+        }
+        if (
+          now_money >=
+          pos_data_list.value[new_pos].need_money[0] +
+            pos_data_list.value[new_pos].need_money[1] +
+            pos_data_list.value[new_pos].need_money[2]
+        ) {
+          dialogBuyHouse.value.btnBuy3 = false;
+        } else {
+          dialogBuyHouse.value.btnBuy3 = true;
+        }
+        dialogBuyHouse.value.btnBuy4 = true;
       }
       dialogBuyHouse.value.visible = true;
     }
   }
 };
 
-const btnBuyHouse = () => {
+const btnBuyHouse = (num: number) => {
   var now_money = player1_data.value.money;
   var now_pos = player1_pos.value;
+  console.log(now_money, now_pos, num);
+  var need_money = 0;
+  for (var i = 0; i < num; i++) {
+    need_money = need_money + pos_data_list.value[now_pos].need_money[i];
+  }
+  if (need_money <= now_money) {
+    player1_data.value.money = now_money - need_money;
+    pos_list.value[now_pos].value.showHouse(num);
+    pos_data_list.value[now_pos].owner = 1;
+    pos_data_list.value[now_pos].level = num;
+  } else {
+    alert('钱不够!');
+  }
+  dialogBuyHouse.value.visible = false;
+  showBtnThrow.value = true;
 };
 
 const showHouseTest = () => {
@@ -210,37 +267,37 @@ const closeDialogBuyHouse = (done: () => void) => {
 
 const pos_center_list = ref([
   [1620, 1620],
-  [1410, 1620],
-  [1230, 1620],
-  [1050, 1620],
-  [870, 1620],
-  [690, 1620],
-  [510, 1620],
-  [330, 1620],
-  [120, 1620],
-  [120, 1410],
-  [120, 1230],
-  [120, 1050],
-  [120, 870],
-  [120, 690],
-  [120, 510],
-  [120, 330],
-  [120, 120],
-  [330, 120],
-  [510, 120],
-  [690, 120],
-  [870, 120],
-  [1050, 120],
-  [1230, 120],
-  [1410, 120],
-  [1620, 120],
-  [1620, 330],
-  [1620, 510],
-  [1620, 690],
-  [1620, 870],
-  [1620, 1050],
-  [1620, 1230],
   [1620, 1410],
+  [1620, 1230],
+  [1620, 1050],
+  [1620, 870],
+  [1620, 690],
+  [1620, 510],
+  [1620, 330],
+  [1620, 120],
+  [1410, 120],
+  [1230, 120],
+  [1050, 120],
+  [870, 120],
+  [690, 120],
+  [510, 120],
+  [330, 120],
+  [120, 120],
+  [120, 330],
+  [120, 510],
+  [120, 690],
+  [120, 870],
+  [120, 1050],
+  [120, 1230],
+  [120, 1410],
+  [120, 1620],
+  [330, 1620],
+  [510, 1620],
+  [690, 1620],
+  [870, 1620],
+  [1050, 1620],
+  [1230, 1620],
+  [1410, 1620],
 ]);
 
 const pos_data_list = ref([
@@ -450,196 +507,196 @@ const pos_data_list = ref([
         color="pink"
       ></square>
       <glass
-        ref="pos15"
+        ref="pos17"
         style="position: absolute; top: 0px; left: 240px"
         rDeg="0"
         text="布拉格"
         color="#DE4BF4"
       ></glass>
       <glass
-        ref="pos14"
+        ref="pos18"
         style="position: absolute; top: 0px; left: 420px"
         rDeg="0"
         text="普吉岛"
         color="#8AE2D5"
       ></glass>
       <glass
-        ref="pos13"
+        ref="pos19"
         style="position: absolute; top: 0px; left: 600px"
         rDeg="0"
         text="柏林"
         color="#DE4BF4"
       ></glass>
       <chance
-        ref="pos12"
+        ref="pos20"
         style="position: absolute; top: 0px; left: 780px"
         rDeg="0"
         text="机会"
         color="#E8EDE8"
       ></chance>
       <glass
-        ref="pos11"
+        ref="pos21"
         style="position: absolute; top: 0px; left: 960px"
         rDeg="0"
         text="莫斯科"
         color="#9603AD"
       ></glass>
       <glass
-        ref="pos10"
+        ref="pos22"
         style="position: absolute; top: 0px; left: 1140px"
         rDeg="0"
         text="日内瓦"
         color="#9603AD"
       ></glass>
       <glass
-        ref="pos9"
+        ref="pos23"
         style="position: absolute; top: 0px; left: 1320px"
         rDeg="0"
         text="罗马"
         color="#9603AD"
       ></glass>
       <square
-        ref="pos8"
+        ref="pos24"
         style="position: absolute; top: 0px; left: 1500px"
         rDeg="0"
         text="世界旅游"
         color="pink"
       ></square>
       <lGlass
-        ref="pos17"
+        ref="pos15"
         style="position: absolute; top: 240px; left: 0px"
         text="圣保罗"
         color="blue"
       ></lGlass>
       <lGlass
-        ref="pos18"
+        ref="pos14"
         style="position: absolute; top: 420px; left: 0px"
         text="夏威夷"
         color="#8AE2D5"
       ></lGlass>
       <lGlass
-        ref="pos19"
+        ref="pos13"
         style="position: absolute; top: 600px; left: 0px"
         text="魁北克"
         color="blue"
       ></lGlass>
       <lChance
-        ref="pos20"
+        ref="pos12"
         style="position: absolute; top: 780px; left: 0px"
         text="机会"
         color="#E8EDE8"
       ></lChance>
       <lGlass
-        ref="pos21"
+        ref="pos11"
         style="position: absolute; top: 960px; left: 0px"
         text="悉尼"
         color="#3498DB"
       ></lGlass>
       <lGlass
-        ref="pos22"
+        ref="pos10"
         style="position: absolute; top: 1140px; left: 0px"
         text="东京"
         color="#3498DB"
       ></lGlass>
       <lGlass
-        ref="pos23"
+        ref="pos9"
         style="position: absolute; top: 1320px; left: 0px"
         text="巴厘岛"
         color="#8AE2D5"
       ></lGlass>
       <lGlass
-        ref="pos7"
+        ref="pos25"
         style="position: absolute; top: 240px; left: 1500px"
         text="塔希提岛"
         color="#8AE2D5"
       ></lGlass>
       <lGlass
-        ref="pos6"
+        ref="pos26"
         style="position: absolute; top: 420px; left: 1500px"
         text="伦敦"
         color="#ED954E"
       ></lGlass>
       <lGlass
-        ref="pos5"
+        ref="pos27"
         style="position: absolute; top: 600px; left: 1500px"
         text="巴黎"
         color="#ED954E"
       ></lGlass>
       <lChance
-        ref="pos4"
+        ref="pos28"
         style="position: absolute; top: 780px; left: 1500px"
         text="机会"
         color="#E8EDE8"
       ></lChance>
       <lGlass
-        ref="pos3"
+        ref="pos29"
         style="position: absolute; top: 960px; left: 1500px"
         text="纽约"
         color="#ED1717"
       ></lGlass>
       <lBank
-        ref="pos2"
+        ref="pos30"
         style="position: absolute; top: 1140px; left: 1500px"
         text="国税局"
         color="#E8EDE8"
       ></lBank>
       <lGlass
-        ref="pos1"
+        ref="pos31"
         style="position: absolute; top: 1320px; left: 1500px"
         text="北京"
         color="#ED1717"
       ></lGlass>
       <square
-        ref="pos24"
+        ref="pos8"
         style="position: absolute; top: 1500px; left: 0px"
         rDeg="0"
         text="无人岛"
         color="pink"
       ></square>
       <glass
-        ref="pos25"
+        ref="pos7"
         style="position: absolute; top: 1500px; left: 240px"
         rDeg="0"
         text="开罗"
         color="#2EC12E"
       ></glass>
       <glass
-        ref="pos26"
+        ref="pos6"
         style="position: absolute; top: 1500px; left: 420px"
         rDeg="0"
         text="迪拜"
         color="#2EC12E"
       ></glass>
       <glass
-        ref="pos27"
+        ref="pos5"
         style="position: absolute; top: 1500px; left: 600px"
         rDeg="0"
         text="新德里"
         color="#2EC12E"
       ></glass>
       <glass
-        ref="pos28"
+        ref="pos4"
         style="position: absolute; top: 1500px; left: 780px"
         rDeg="0"
         text="马尔代夫"
         color="#8AE2D5"
       ></glass>
       <glass
-        ref="pos29"
+        ref="pos3"
         style="position: absolute; top: 1500px; left: 960px"
         rDeg="0"
         text="首尔"
         color="#00FF00"
       ></glass>
       <chance
-        ref="pos30"
+        ref="pos2"
         style="position: absolute; top: 1500px; left: 1140px"
         rDeg="0"
         text="奖励"
         color="#E8EDE8"
       ></chance>
       <glass
-        ref="pos31"
+        ref="pos1"
         style="position: absolute; top: 1500px; left: 1320px"
         rDeg="0"
         text="曼谷"
@@ -665,20 +722,20 @@ const pos_data_list = ref([
   <el-dialog
     v-model="dialogBuyHouse.visible"
     title="Tips"
-    width="40%"
+    width="420px"
     draggable
     :before-close="closeDialogBuyHouse"
   >
-    <el-button :disabled="dialogBuyHouse.btnBuy1" @click="btnBuyHouse"
+    <el-button :disabled="dialogBuyHouse.btnBuy1" @click="btnBuyHouse(1)"
       >购买房1</el-button
     >
-    <el-button :disabled="dialogBuyHouse.btnBuy2" @click="btnBuyHouse"
+    <el-button :disabled="dialogBuyHouse.btnBuy2" @click="btnBuyHouse(2)"
       >购买房2</el-button
     >
-    <el-button :disabled="dialogBuyHouse.btnBuy3" @click="btnBuyHouse"
+    <el-button :disabled="dialogBuyHouse.btnBuy3" @click="btnBuyHouse(3)"
       >购买房3</el-button
     >
-    <el-button :disabled="dialogBuyHouse.btnBuy4" @click="btnBuyHouse"
+    <el-button :disabled="dialogBuyHouse.btnBuy4" @click="btnBuyHouse(4)"
       >购买房4</el-button
     >
   </el-dialog>
