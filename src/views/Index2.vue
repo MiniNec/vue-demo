@@ -156,6 +156,11 @@ const btnThrowDice = async () => {
   }
 };
 
+const btnBuyHouse = () => {
+  var now_money = player1_data.value.money;
+  var now_pos = player1_pos.value;
+};
+
 const showHouseTest = () => {
   pos_list.value[0].value.showHouse(1);
   pos_list.value[1].value.showHouse(2);
@@ -664,10 +669,18 @@ const pos_data_list = ref([
     draggable
     :before-close="closeDialogBuyHouse"
   >
-    <el-button>购买房1</el-button>
-    <el-button>购买房2</el-button>
-    <el-button>购买房3</el-button>
-    <el-button>购买房4</el-button>
+    <el-button :disabled="dialogBuyHouse.btnBuy1" @click="btnBuyHouse"
+      >购买房1</el-button
+    >
+    <el-button :disabled="dialogBuyHouse.btnBuy2" @click="btnBuyHouse"
+      >购买房2</el-button
+    >
+    <el-button :disabled="dialogBuyHouse.btnBuy3" @click="btnBuyHouse"
+      >购买房3</el-button
+    >
+    <el-button :disabled="dialogBuyHouse.btnBuy4" @click="btnBuyHouse"
+      >购买房4</el-button
+    >
   </el-dialog>
 </template>
 
