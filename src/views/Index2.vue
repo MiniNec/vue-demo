@@ -113,7 +113,7 @@ const btnThrowDice = async () => {
     console.log('机会');
     showBtnThrow.value = true;
     return;
-  } else if (new_pos == 3) {
+  } else if (new_pos == 2) {
     console.log('奖励');
     showBtnThrow.value = true;
     return;
@@ -255,6 +255,15 @@ const dialogBuyHouse = ref({
   btnBuy3: false,
   btnBuy4: false,
 });
+
+const cal_result = (player_id) => {
+  return new Promise(() => {
+    
+    for (var i = 0; i < 32; i++) {
+
+    }
+  });
+};
 
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
