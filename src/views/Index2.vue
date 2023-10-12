@@ -203,7 +203,7 @@ const btnBuyHouse = (num: number) => {
   var now_pos = player1_pos.value;
   console.log(now_money, now_pos, num);
   var need_money = 0;
-  for (var i = 0; i < num; i++) {
+  for (var i = pos_data_list.value[now_pos].level; i < num; i++) {
     need_money = need_money + pos_data_list.value[now_pos].need_money[i];
   }
   if (need_money <= now_money) {
