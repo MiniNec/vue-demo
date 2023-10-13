@@ -1,5 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Ghost from '@/components/roles/Ghost.vue';
+</script>
 
-<template><div>132</div></template>
+<template>
+  <div>
+    <ghost></ghost>
+  </div>
+</template>
 
 <style></style>
